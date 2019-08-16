@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rhy.feedback.dao.IFeedBackDao">
+	<resultMap id="FeedBack" type="com.rhy.feedback.entity.FeedBack">
+		<result column="ID" jdbcType="INTEGER" property="id" />
+		<result column="FEEDBACK_CONTENT" jdbcType="VARCHAR" property="feedbackContent" />
+		<result column="CONTACT" jdbcType="VARCHAR" property="contact" />
+		<result column="FEEDBACK_DATE" jdbcType="VARCHAR" property="feedbackDate" />
+	</resultMap>
+
+	<insert id="insertFeedback" parameterType="com.rhy.feedback.dao.IFeedBackDao">
+		INSERT INTO
+		FEEDBACK
+		(
+		FEEDBACK_CONTENT,
+		CONTACT,
+		FEEDBACK_DATE
+		)
+		VALUES
+		(
+		#{feedBack.feedbackContent,jdbcType=VARCHAR},
+		#{feedBack.contact,jdbcType=VARCHAR},
+		#{feedBack.feedbackDate,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<select id="getFeedBack" resultMap="FeedBack">
+		SELECT
+		*
+		FROM
+		FEEDBACK
+		ORDER BY
+		FEEDBACK_DATE
+		DESC
+	</select>
+
+</mapper>

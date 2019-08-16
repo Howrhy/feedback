@@ -1,0 +1,24 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: service-feedback
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT&useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka/
+     
+mybatis:
+    #对应实体类路径
+    typeAliasesPackage: com.rhy.feedback.entity
+    #对应mapper映射文件路径
+    mapperLocations: classpath*:mapper/**/*.xml
+    configuration:
+      mapUnderscoreToCamelCase: true
